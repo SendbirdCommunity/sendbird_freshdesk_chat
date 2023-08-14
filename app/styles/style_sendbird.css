@@ -1,0 +1,368 @@
+html {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+*,
+*:after,
+*::before {
+    box-sizing: inherit;
+}
+
+.main {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#box{
+    width: 1000px;
+    background: #f7f9fa;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    border: none;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Tab buttons */
+.tab-button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    outline: none;
+    padding: 10px 20px;
+    transition: 0.3s;
+    color: #8c8c8c;
+    border-bottom: 2px solid transparent;
+}
+
+/* Active tab button */
+.tab-button.active {
+    background-color: #fff;
+    color: #0084ff;
+    border-bottom: 2px solid #0084ff;
+}
+
+.tab-button__red-dot.display {
+    display: inline-block;
+    width: 12px; /* Dot size */
+    height: 12px; /* Dot size */
+    background-color: red; /* Dot color */
+    border-radius: 50%;
+    position: absolute;
+    top: 0; /* Position from the top */
+    right: 12px; /* Position from the right */
+}
+
+.tab-button__red-dot.hidden {
+    display: none;
+}
+
+
+/* You may also need to set a position property on the button to make the absolute positioning of the dot work */
+.tab-button {
+    position: relative;
+}
+
+
+/* Tab content */
+.tab-content {
+    display: none;
+    padding: 2px;
+}
+
+/* Active tab content */
+.tab-content.active {
+    display: block;
+}
+
+/* Message Input */
+#tab1-tab-content__message-input {
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    align-items: center;
+    padding: 12px 5px 5px;
+}
+
+.chat-view-channel-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8c8c8c;
+    padding: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 94%;
+    background: ghostwhite;
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.chat-view-channel-title:hover {
+    background: #eaeff2;
+    cursor: pointer;
+}
+
+
+span.channel-entry__unread-count {
+    background-color: rgb(224, 59, 40);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+span.channel-entry__unread-count-zero {
+    background-color: #39b4b4;
+    color: #39b4b4;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+
+
+.message-input__wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-right: 10px;
+}
+
+
+.message-input__button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f9fa;
+    color: #8c8c8c;
+    border-radius: 6px;
+    padding: 3px;
+}
+
+.message-input__button {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Message input */
+.message-input__send-button {
+    border: none;
+    background-color: white;
+    color: #00b3b3;
+
+}
+
+.message-input__send-button:hover {
+    color: #031e3c;
+    cursor: pointer;
+}
+
+.message-input__text {
+    border: none;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 24px;
+    width: 100%;
+    height: 35px;
+    outline: none;
+}
+
+.message-input__text:focus {
+    /*box-shadow: 0 0 0 2px #0084ff;*/
+}
+
+.message-input__icon {
+    color: #767676;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+/* Message view */
+#tab1-tab-content__message-view {
+    padding: 10px;
+    overflow: auto;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+}
+
+#tab1-tab-content__message-view::-webkit-scrollbar {
+    width: 5px; /* Adjust the width for vertical scrollbar */
+    height: 5px; /* Adjust the height for horizontal scrollbar */
+}
+
+#tab1-tab-content__message-view::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scroll thumb */
+}
+
+#tab1-tab-content__message-view::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scroll thumb on hover */
+}
+
+
+.message-bubble {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.message-bubble__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.message-bubble__name {
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-right: 10px;
+}
+
+.message-bubble__time {
+    font-size: 12px;
+    color: #6665dd;
+}
+
+.message-bubble__text {
+    background-color: #12344d;
+    border: 1px solid #12344d;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 90%;
+    color: #fff;
+    font-size: 0.8rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+.message-bubble__other_user {
+    align-self: flex-start;
+}
+
+.message-bubble__my {
+    align-self: flex-end;
+}
+
+.message-bubble__my .message-bubble__header {
+    flex-direction: row-reverse;
+}
+
+.message-bubble__my .message-bubble__text {
+    background-color: #39b4b4;
+    color: white;
+    border-color: #39b4b4;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    align-self: flex-end;
+    font-size: 0.8rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+.message-bubble__my .message-bubble__time {
+    margin-left: 5px;
+    margin-right: 0;
+    color: #6665dd;
+}
+
+
+
+/** Channels ***/
+.channel-entry-title {
+    display: grid;
+    grid-template-columns: 13fr 1fr;
+}
+
+
+.channel-list {
+
+    height: 640px;
+    overflow-y: scroll;
+    /*border-right: 1px solid #dcdcdc;*/
+    /*background-color: ghostwhite;*/
+}
+
+.channel-entry__title {
+    display: grid;
+    grid-template-columns: 5fr 2fr 2fr;
+}
+
+
+.channel-entry {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #dcdcdc;
+    cursor: pointer;
+}
+
+.channel-entry:hover {
+    background-color: #f6f7f9;
+}
+
+.channel-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+}
+
+.last-message {
+    font-size: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+    color: gray;
+}
+
+.message-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.timestamp {
+    color: black;
+    margin-right: 10px;
+    /*text-align: right;*/
+    color: gray;
+    font-size: 0.7rem;
+}
+
+.ticket-status {
+    color: #ff6e6e;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: #ffe8e8;
+    font-size: 12px;
+}

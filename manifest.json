@@ -1,0 +1,34 @@
+{
+  "platform-version": "2.3",
+  "product": {
+    "freshdesk": {
+      "location": {
+        "cti_global_sidebar": {
+          "url": "ctiModal.html",
+          "icon": "styles/images/icon.svg"
+        },
+        "ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
+      "functions": {
+        "checkUserExists": {
+          "timeout": 5
+        },
+        "getUserSessionToken": {
+          "timeout": 5
+        }
+      },
+      "requests": {
+        "checkUserExists": {},
+        "createUser": {},
+        "getUserSessionToken": {}
+      }
+    }
+  },
+  "engines": {
+    "node": "18.16.1",
+    "fdk": "9.0.3"
+  }
+}

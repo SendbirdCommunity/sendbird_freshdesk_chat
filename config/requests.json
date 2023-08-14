@@ -1,0 +1,35 @@
+{
+  "checkUserExists": {
+    "schema": {
+      "method": "GET",
+      "host": "api-<%= iparam.app_id %>.sendbird.com",
+      "path": "/v3/users/<%= context.user_id %>",
+      "headers": {
+        "Content-Type": "application/json",
+        "Api-Token": "<%= iparam.api_token %>"
+      }
+    }
+  },
+  "createUser": {
+    "schema": {
+      "method": "POST",
+      "host": "api-<%= iparam.app_id %>.sendbird.com",
+      "path": "/v3/users",
+      "headers": {
+        "Content-Type": "application/json",
+        "Api-Token": "<%= iparam.api_token %>"
+      }
+    }
+  },
+  "getUserSessionToken": {
+    "schema": {
+      "method": "POST",
+      "host": "api-<%= iparam.app_id %>.sendbird.com",
+      "path": "/v3/users/<%= context.user_id %>/token",
+      "headers": {
+        "Content-Type": "application/json",
+        "Api-Token": "<%= iparam.api_token %>"
+      }
+    }
+  }
+}
