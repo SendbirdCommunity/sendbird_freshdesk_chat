@@ -80,8 +80,8 @@ class SBFDChatClient {
      */
     async initializeSessionManager() {
         const sessionManager = new SBFDSessionHandler(this.client);
-        console.log(this.loggedInUser);
         const sessionTokenData = await sessionManager.checkAndCreateSessionToken(this.loggedInUser.id, this.loggedInUser.name);
+
         var { SendbirdChat, GroupChannelModule } = Sendbird;
         const appId = this.appId;
         this.sb = SendbirdChat.init({ appId, modules: [new GroupChannelModule()] });

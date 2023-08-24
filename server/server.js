@@ -68,6 +68,8 @@ exports = {
 const invokeTemplate = async (template, params = {}) => {
     try {
         const data = await $request.invokeTemplate(template, params);
+        console.log(`SB Serverless: ${template} invoked successfully.`);
+        console.log(`SB Serverless: ${template} response: ${JSON.stringify(data)}`);
         renderData(data);
     } catch (e) {
         console.log(`${template.toUpperCase()} ERROR:`, e);

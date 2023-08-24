@@ -14,21 +14,26 @@ class SBFDSessionHandler {
 
     async getUserSessionToken(userId) {
         const sessionToken = await this.client.request.invoke("getUserSessionToken", { params: { "user_id": userId, expires_at: await this.setSessionTokenExpiry() } });
+        console.log(sessionToken)
         const data = JSON.parse(sessionToken.message);
         return data;
     }
 
     async checkAndCreateSessionToken(userId, nickname) {
         try {
-            await this.client.request.invoke("checkUserExists", { params: { "user_id": userId, "nickname": nickname, "profile_url": "" } });
+
             const locallyStoredUserSessionToken = await this.client.db.get("sendbird_session_token");
             const expiresAt = locallyStoredUserSessionToken?.expires_at;
             const now = new Date().getTime();
 
-            if (expiresAt && expiresAt > now) {
+            if (expiresAt  > now) {
                 locallyStoredUserSessionToken.source = "local";
                 return locallyStoredUserSessionToken;
             } else {
+                //Check if user exists
+                await this.client.request.invoke("checkUserExists", { params: { "user_id": userId, "nickname": nickname, "profile_url": "" } });
+
+                //Create user session token
                 const newSessionToken = await this.getUserSessionToken(userId);
                 newSessionToken.source = "server:expired";
                 await this.client.db.set("sendbird_session_token", newSessionToken);
