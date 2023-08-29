@@ -73,7 +73,6 @@ class SBFDChatClient {
 
     /**
      * Initializes the client, sets up notifications, and resizes the client instance.
-     *
      * @async
      * @function initializeClient
      * @returns {void}
@@ -91,7 +90,6 @@ class SBFDChatClient {
     /**
      * Initializes the session manager, creates a session token, connects to Sendbird,
      * and shows a success notification.
-     *
      * @async
      * @function initializeSessionManager
      * @returns {void}
@@ -110,7 +108,6 @@ class SBFDChatClient {
 
     /**
      * Sets the channel name in the user interface.
-     *
      * @function setChannelName
      * @param {string} channelName - The name of the channel to be displayed.
      * @returns {void}
