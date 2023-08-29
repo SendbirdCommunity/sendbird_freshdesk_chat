@@ -4,7 +4,7 @@
     "exclude": ["./node_modules", "./config","./coverage","./.idea","./.fdk"]
   },
   "opts": {
-    "destination": "./out",  // Path to your output directory
+    "destination": "./docs",  // Path to your output directory
     "recurse": true
   }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: SBFDNotificationHandler</title>
+    <title>JSDoc: Class: SBFDMessageStatusHandler</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: SBFDNotificationHandler</h1>
+    <h1 class="page-title">Class: SBFDMessageStatusHandler</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>SBFDNotificationHandler<span class="signature">(notificationType, title, message)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>SBFDMessageStatusHandler<span class="signature">(chatClient)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Class for notifications</div>
+            <div class="class-description">Class representing a handler for managing message statuses within the SBFDChatClient.</div>
         
     
 </header>
@@ -45,12 +45,16 @@
     
 
     
-    <h4 class="name" id="SBFDNotificationHandler"><span class="type-signature"></span>new SBFDNotificationHandler<span class="signature">(notificationType, title, message)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="SBFDMessageStatusHandler"><span class="type-signature"></span>new SBFDMessageStatusHandler<span class="signature">(chatClient)</span><span class="type-signature"></span></h4>
     
 
     
 
 
+
+<div class="description">
+    Create a new SBFDMessageStatusHandler.
+</div>
 
 
 
@@ -85,10 +89,15 @@
 
         <tr>
             
-                <td class="name"><code>notificationType</code></td>
+                <td class="name"><code>chatClient</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
             
             </td>
 
@@ -96,43 +105,7 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>title</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
+            <td class="description last">An instance of SBFDChatClient or a related chat client object.</td>
         </tr>
 
     
@@ -173,7 +146,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_scripts_SBFDNotificationHandler.js.html">app/scripts/SBFDNotificationHandler.js</a>, <a href="app_scripts_SBFDNotificationHandler.js.html#line4">line 4</a>
+        <a href="app_scripts_SBFDMessageStatusHandler.js.html">app/scripts/SBFDMessageStatusHandler.js</a>, <a href="app_scripts_SBFDMessageStatusHandler.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -219,6 +192,82 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="chatClient"><span class="type-signature"></span>chatClient<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    The chat client associated with this handler.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="app_scripts_SBFDMessageStatusHandler.js.html">app/scripts/SBFDMessageStatusHandler.js</a>, <a href="app_scripts_SBFDMessageStatusHandler.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -229,12 +278,16 @@
     
 
     
-    <h4 class="name" id="show"><span class="type-signature"></span>show<span class="signature">(notificationType, title, message)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="markMessageAsRead"><span class="type-signature"></span>markMessageAsRead<span class="signature">(channelUrl)</span><span class="type-signature"></span></h4>
     
 
     
 
 
+
+<div class="description">
+    Mark a message as read within a specific channel.
+</div>
 
 
 
@@ -269,10 +322,15 @@
 
         <tr>
             
-                <td class="name"><code>notificationType</code></td>
+                <td class="name"><code>channelUrl</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
             
             </td>
 
@@ -280,43 +338,7 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>title</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
+            <td class="description last">The URL of the channel where the message should be marked as read.</td>
         </tr>
 
     
@@ -357,7 +379,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_scripts_SBFDNotificationHandler.js.html">app/scripts/SBFDNotificationHandler.js</a>, <a href="app_scripts_SBFDNotificationHandler.js.html#line20">line 20</a>
+        <a href="app_scripts_SBFDMessageStatusHandler.js.html">app/scripts/SBFDMessageStatusHandler.js</a>, <a href="app_scripts_SBFDMessageStatusHandler.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -409,7 +431,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 13:27:25 GMT+0900 (Korean Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 13:35:40 GMT+0900 (Korean Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
