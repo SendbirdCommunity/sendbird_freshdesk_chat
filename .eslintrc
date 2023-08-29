@@ -1,0 +1,12 @@
+{
+  "plugins": ["jsdoc"],
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "jsdoc/check-param-names": 1,
+    "jsdoc/check-tag-names": 1,
+    "jsdoc/check-types": 1
+    // ... other JSDoc related rules
+  }
+}

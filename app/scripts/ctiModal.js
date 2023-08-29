@@ -1,4 +1,7 @@
-// Initialize a variable to keep track of the currently active channel
+/**
+ * Singleton instance of the SBFDchat client.
+ * @type {null|object}
+ */
 let SBFDchatClientInstance = null
 
 setTimeout(async () => {
@@ -241,7 +244,6 @@ class SBFDChatClient {
 
     /**
      * Fetches the channel list.
-     * @param {object} sb - The Sendbird object.
      * @returns {Promise<object>} A promise that resolves with the channel collection.
      */
     async fetchChannelList() {
@@ -286,7 +288,7 @@ class SBFDChatClient {
 
     /**
      * Sets the channel handler for the channel collection.
-     * @param {object} channelCollection - The channel collection.
+     * @function setChannelHandler
      */
     setChannelHandler() {
 
