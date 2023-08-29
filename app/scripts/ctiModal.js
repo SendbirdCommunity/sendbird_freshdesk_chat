@@ -1,4 +1,11 @@
 /**
+ * @fileoverview This is a logical module for all user-related functionality.
+ * @module users
+ */
+
+
+
+/**
  * Singleton instance of the SBFDchat client.
  * @type {null|object}
  */
