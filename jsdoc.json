@@ -5,6 +5,7 @@
   },
   "opts": {
     "destination": "./docs",  // Path to your output directory
-    "recurse": true
+    "recurse": true,
+    "readme": "./README.md"
   }
 }

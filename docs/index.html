@@ -42,6 +42,108 @@
 
 
 
+    <section>
+        <article><h1>Global FD Chat</h1>
+<p>Global FD Chat is a Freshdesk app designed to enhance customer support and communication. This project leverages the Freshdesk platform to build a robust and reliable chat solution, compatible with major browsers.</p>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#support-and-compatibility">Support and Compatibility</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2>Quick Start</h2>
+<p>You can build a Freshdesk app by using the following steps. For detailed instructions, please refer to the <a href="https://developers.freshdesk.com/v2/docs/quick-start/">Freshdesk Quick Start Guide</a>.</p>
+<h3>Install NVM</h3>
+<ul>
+<li><strong>MacOS</strong>: Follow the installation steps in <a href="https://github.com/nvm-sh/nvm">NVM’s GitHub repository</a> or install via <a href="https://brew.sh/">brew</a>.</li>
+<li><strong>Linux</strong>: Install cURL and run the installation script as described in the Freshdesk documentation.</li>
+<li><strong>Windows</strong>: Download the NVM Setup installer or install via <a href="https://chocolatey.org/">Chocolatey</a>.</li>
+</ul>
+<h3>Install Node</h3>
+<ul>
+<li>Install Node.js using NVM.</li>
+<li>Verify the Node installation and set the default Node version.</li>
+<li>Install required build tools for MacOS and Windows.</li>
+</ul>
+<h3>Install the Freshworks CLI</h3>
+<ul>
+<li>Follow the instructions to install the CLI version compatible with your project.</li>
+</ul>
+<h2>Prerequisites</h2>
+<ul>
+<li>Google Chrome, Firefox, Edge, Safari (latest and immediately preceding version).</li>
+<li>Node.js 18.15.0 or later.</li>
+<li>NVM 0.39.3 or later.</li>
+<li>Freshworks CLI 9.0.0 or later.</li>
+<li>Freshdesk webhooks and Sendbird's <a href="https://somelink.com">webhook server</a></li>
+<li>A proxy server to create Freshdesk tickets and associate Sendbird channel (<a href="https://somelink.com">example</a>)</li>
+</ul>
+<h2>Installation</h2>
+<p>To install the project locally, follow these steps:</p>
+<ol>
+<li>Clone the repository.</li>
+<li>Navigate to the project directory.</li>
+<li>Add an <code>iparams.json</code> file to the project root directory.</li>
+</ol>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;api_token&quot;: {
+    &quot;display_name&quot;: &quot;Sendbird Api_Token&quot;,
+    &quot;description&quot;: &quot;Collect from Sendbird Dashboard&quot;,
+    &quot;type&quot;: &quot;text&quot;,
+    &quot;required&quot;: true,
+    &quot;secure&quot;: true,
+    &quot;default_value&quot;: &quot;YOUR_API_TOKEN&quot;
+  },
+  &quot;app_id&quot;: {
+    &quot;display_name&quot;: &quot;Sendbird app_id&quot;,
+    &quot;description&quot;: &quot;Collect from Sendbird Dashboard&quot;,
+    &quot;type&quot;: &quot;text&quot;,
+    &quot;required&quot;: true,
+    &quot;secure&quot;: false,
+    &quot;default_value&quot;: &quot;YOUR_APP_ID&quot;
+  }
+}
+</code></pre>
+<ol start="4">
+<li>Follow the Quick Start instructions above.</li>
+</ol>
+<h2>Usage</h2>
+<h3>Running the Application Test Mode</h3>
+<ol>
+<li>Navigate to the project directory.</li>
+<li>Start the server by running <code>fdk run</code>.</li>
+<li>Open the Freshdesk configuration webpage in your browser (link seen in terminal after <code>fdk run</code>).</li>
+<li>Add your Sendbird app_id and session token (from Sendbird dashboard) to the Freshdesk app settings.</li>
+<li>Open your Fresdesk app add <code>?dev=true</code> to the url and reload in a compatible browser to access the main interface.</li>
+</ol>
+<h3>Running the Application in Production Mode</h3>
+<ol>
+<li>Run <code>fdk validate</code> to validate the whole project.</li>
+<li>Run <code>fdk package</code> to create a zip file of the app.</li>
+<li>Upload app to Freshdesk.</li>
+</ol>
+<h3>Interacting with the Application</h3>
+<ul>
+<li>The application provides a global sidebar (<code>ctiModal.html</code>) and a ticket sidebar (<code>index.html</code>) within the Freshdesk interface.</li>
+<li></li>
+</ul>
+<h3>Configuration</h3>
+<ul>
+<li>Modify <code>config/iparams.json</code> to customize HTTP requests and parameters.</li>
+<li>Set up Freshdesk webhooks to handle ticket changes - <a href="https://youtube.com">video</a>.</li>
+</ul>
+<h2>Support and Compatibility</h2>
+<p>Apps built on the Freshworks platform are compatible with the latest and immediately preceding versions of Google Chrome, Firefox, Edge, and Safari.</p>
+<h2>Contributing</h2>
+<p>If you would like to contribute to this project, please review the contributing guidelines and submit your changes via pull requests.</p>
+<h2>License</h2>
+<p>MIT License</p></article>
+    </section>
+
 
 
 
@@ -56,7 +158,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 19:33:21 GMT+0900 (Korean Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 19:41:15 GMT+0900 (Korean Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
