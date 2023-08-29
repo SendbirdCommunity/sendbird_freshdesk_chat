@@ -4,10 +4,9 @@
  * @module SBFDSessionHandler
  */
 
-
 /**
  * Represents a handler for managing SBFD sessions.
- * @class SBFDSessionHandler
+ * @class
  */
 class SBFDSessionHandler {
     /**

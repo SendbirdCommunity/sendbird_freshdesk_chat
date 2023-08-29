@@ -7,7 +7,7 @@
 
 /**
  * Handles the display of notifications.
- * @class SBFDNotificationHandler
+ * @class
  */
 class SBFDNotificationHandler {
     /**
