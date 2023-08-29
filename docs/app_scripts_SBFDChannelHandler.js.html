@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app/scripts/SBFDChannelHandler.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app/scripts/SBFDChannelHandler.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview Home of the SBFDChannelHandler global object which listens for channel events and updates the UI accordingly.
+ * @module SBFDChannelHandler
+ */
+
+
+/**
+ * Represents a chat channel.
+ */
+class SBFDChannel {
+    /**
+     * Creates a new channel.
+     * @param {string} name - The name of the channel.
+     * @param {string} timestamp - The timestamp of the last message.
+     * @param {string} lastMessage - The content of the last message.
+     * @param {string} channelUrl - The URL of the channel.
+     */
+    constructor(name, timestamp, lastMessage, channelUrl, unreadMessageCount) {
+        this.name = name;
+        this.timestamp = timestamp;
+        this.lastMessage = lastMessage;
+        this.channelUrl = channelUrl;
+        this.unreadMessageCount = unreadMessageCount;
+    }
+
+    /**
+     * Creates the HTML representation of the channel.
+     * @returns {HTMLElement} The created div element representing the channel.
+     */
+    createEntry() {
+        const channelEntry = document.createElement('div');
+        // channelEntry.classList.add('channel-entry');
+        channelEntry.setAttribute('data-channel-url', this.channelUrl);
+        let unreadClass = 'channel-entry__unread-count'
+        if(this.unreadMessageCount == 0) unreadClass = 'channel-entry__unread-count-zero';
+        channelEntry.innerHTML = `
+            &lt;div class="channel-entry" onclick="SBFDChannelHandler.switchToChatView('${this.channelUrl}','${this.name}' )">
+                &lt;div class="channel-entry-title">
+                    &lt;span class="channel-name">${this.name}&lt;/span>
+                    &lt;span class=${unreadClass}>${this.unreadMessageCount}&lt;/span>
+                &lt;/div>
+                 &lt;span class="timestamp">${this.timestamp}&lt;/span>
+                &lt;div class="last-message">${this.lastMessage}&lt;/div>
+            &lt;/div>
+        `;
+        return channelEntry;
+    }
+}
+
+/**
+ * Object containing functions for handling channels.
+ * @type {object}
+ * @property {function} createChannelEntry - Creates a channel entry.
+ * @property {function} createChannelList - Creates a list of channels.
+ * @property {function} switchToChatView - Switches to the chat view.
+ *
+ */
+const SBFDChannelHandler = {
+    /**
+     * Switches the view to the chat view for a given channel URL.
+     * @param {string} channelUrl - The URL of the channel.
+     * @returns {Promise&lt;void>} A promise that resolves when the operation is complete.
+     */
+    switchToChatView: async function(channelUrl, cName) {
+        // Switch to chat view
+
+        console.log("CHANGE to Chat view");
+        const chatView = document.getElementById('chatView');
+        chatView.classList.remove('hidden');
+        chatView.classList.add('active');
+        //Set title of chat view
+
+        const channelTab = document.getElementById('channel-list-tab');
+        const chatTab = document.getElementById('chat-list-tab');
+        channelTab.classList.remove('active');
+        chatTab.classList.add('active');
+
+
+        const channelName = document.getElementById('chat-view-channel-name');
+        channelName.innerHTML = cName;
+
+        const channelList = document.getElementById('channelList');
+        channelList.classList.add('hidden');
+        channelList.classList.remove('active');
+
+        //Mark messages as read.
+        SBFDchatClientInstance.isChatOpen = true;
+        SBFDchatClientInstance.buildMessageCollection(channelUrl);
+        SBFDchatClientInstance.messageStatusHandler.markMessageAsRead(channelUrl);
+    },
+
+    /**
+     * Renders a list of channels in the UI.
+     * @param {Array} channels - The list of channels to render.
+     * @returns {Promise&lt;void>} A promise that resolves when the operation is complete.
+     *
+     */
+    renderChannelList: function(channels) {
+        const target = document.getElementById('channel-list');
+        target.innerHTML = '';
+
+        channels.forEach(channel => {
+            let lastMessage = '';
+            let lastMessageTimestamp = '';
+
+            if (channel.lastMessage) {
+                lastMessage = channel.lastMessage.message;
+                lastMessageTimestamp = new Date(channel.lastMessage.createdAt).toLocaleString([], {month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit'});
+            }
+            const unreadMessageCount = channel.unreadMessageCount
+            const channelElement = new SBFDChannel(channel.name, lastMessageTimestamp, lastMessage, channel.url, unreadMessageCount);
+            target.appendChild(channelElement.createEntry());
+        })
+    }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-SBFDChannelHandler.html">SBFDChannelHandler</a></li><li><a href="module-SBFDMessageHandler.html">SBFDMessageHandler</a></li><li><a href="module-SBFDMessageStatusHandler.html">SBFDMessageStatusHandler</a></li><li><a href="module-SBFDNotificationHandler.html">SBFDNotificationHandler</a></li><li><a href="module-SBFDSessionHandler.html">SBFDSessionHandler</a></li><li><a href="module-ctiModal.html">ctiModal</a></li></ul><h3>Classes</h3><ul><li><a href="module-SBFDChannelHandler-SBFDChannel.html">SBFDChannel</a></li><li><a href="module-SBFDMessageHandler-SBFDMessage.html">SBFDMessage</a></li><li><a href="module-SBFDMessageStatusHandler-SBFDMessageStatusHandler.html">SBFDMessageStatusHandler</a></li><li><a href="module-SBFDNotificationHandler-SBFDNotificationHandler.html">SBFDNotificationHandler</a></li><li><a href="module-SBFDSessionHandler-SBFDSessionHandler.html">SBFDSessionHandler</a></li><li><a href="module-ctiModal-SBFDChatClient.html">SBFDChatClient</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getUserSessionToken">getUserSessionToken</a></li><li><a href="global.html#handleError">handleError</a></li><li><a href="global.html#invokeTemplate">invokeTemplate</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 18:49:04 GMT+0900 (Korean Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

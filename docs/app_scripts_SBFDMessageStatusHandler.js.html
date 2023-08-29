@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: app/scripts/SBFDMessageStatusHandler.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,57 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: app/scripts/SBFDMessageStatusHandler.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @fileoverview Home of the SBFDMessageStatusHandler which provides functions for updating the message status.
+ * @module SBFDMessageStatusHandler
+ */
 
 
-    <h3> </h3>
+/**
+ * Class representing a handler for managing message statuses within the SBFDChatClient.
+ * @class
+ *
+ */
+class  SBFDMessageStatusHandler  {
+  /**
+   * Create a new SBFDMessageStatusHandler.
+   * @param {object} chatClient - An instance of SBFDChatClient or a related chat client object.
+   */
+  constructor(chatClient) {
+    /**
+     * The chat client associated with this handler.
+     * @type {object}
+     */
+    this.chatClient = chatClient;
+  }
 
+  /**
+   * Mark a message as read within a specific channel.
+   * @param {string} channelUrl - The URL of the channel where the message should be marked as read.
+   */
+  markMessageAsRead(channelUrl) {
+    this.chatClient.channelCollection.channels.forEach(channel => {
+      if (channel.url === channelUrl) {
+        channel.markAsRead();
 
+      }
 
+    });
+  }
+}
 
-
-
-
-
-
-
-    
-
-
-
-
-
+</code></pre>
+        </article>
+    </section>
 
 
 
