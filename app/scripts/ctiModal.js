@@ -1,6 +1,6 @@
 /**
- * @fileoverview This is a logical module for all user-related functionality.
- * @module users
+ * @fileoverview Is the starting point for the application to show the Freshdesk CTI modal
+ * @module ctiModal
  */
 
 
