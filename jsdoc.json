@@ -1,0 +1,10 @@
+{
+  "source": {
+    "include": ["./app/scripts", "./server"],  // Path to your source files
+    "exclude": ["./node_modules", "./config","./coverage","./.idea","./.fdk"]
+  },
+  "opts": {
+    "destination": "./out",  // Path to your output directory
+    "recurse": true
+  }
+}

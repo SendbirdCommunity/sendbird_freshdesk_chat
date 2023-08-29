@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: server/server.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: server/server.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>exports = {
+    async checkUserExists(context) {
+        /**
+         * Checks if a user exists by invoking a request template with the given context.
+         * @param {Object} context - The context containing parameters needed to check if the user exists.
+         * @returns {Promise&lt;void>} - Returns a promise that resolves with the user data if found, or handles specific error code 400201 if the user is not found.
+         */
+        try {
+            /**
+             * Check if the user exists by invoking the corresponding template.
+             */
+            await invokeTemplate("checkUserExists", { context: context.params });
+        } catch (e) {
+            /**
+             * Handle any errors that occur when checking for the user's existence.
+             */
+            const errorMessage = handleError(e.response);
+            if (errorMessage === 'user_not_found') {
+                /**
+                 * If the user is not found, create a new user by invoking the corresponding template.
+                 */
+                $db.delete("sendbird_session_token");
+                await invokeTemplate("createUser", { context: {}, body: JSON.stringify(context.params) });
+            } else {
+                /**
+                 * If an error other than "user not found" occurs, render the error message.
+                 */
+                renderData(errorMessage);
+            }
+        }
+    },
+    /**
+     * Retrieves the user session token by invoking a specific template.
+     *
+     * @async
+     * @function getUserSessionToken
+     * @param {Object} context - The context object containing necessary parameters.
+     * @param {Object} context.params - The parameters needed to retrieve the session token.
+     * @throws Will throw an error if the invocation of the template fails.
+     * @returns {void} No return value, but side effects include rendering data or handling errors as needed.
+     * @example
+     *   const context = {
+     *     params: {
+     *       userId: "123",
+     *       otherParam: "value"
+     *     }
+     *   };
+     *   await getUserSessionToken(context);
+     */
+    async getUserSessionToken(context) {
+        console.log("CONTEXT:", context)
+        try {
+            await invokeTemplate("getUserSessionToken", { context: context.params, body: JSON.stringify(context.params) });
+        } catch (e) {
+            const errorMessage = handleError(e.response);
+            renderData(errorMessage);
+        }
+    }
+}
+
+/**
+ * Invokes the specified template and handles the response, including logging and rendering the data.
+ *
+ * @param {string} template - The name of the template to invoke.
+ * @param {Object} params - The parameters to pass to the template.
+ * @throws Will throw an error if the request fails.
+ */
+const invokeTemplate = async (template, params = {}) => {
+    try {
+        const data = await $request.invokeTemplate(template, params);
+        console.log(`SB Serverless: ${template} invoked successfully.`);
+        console.log(`SB Serverless: ${template} response: ${JSON.stringify(data)}`);
+        renderData(data);
+    } catch (e) {
+        console.log(`${template.toUpperCase()} ERROR:`, e);
+        throw e;
+    }
+};
+
+/**
+ * Handles error response, checking for specific error code 400201 (User not found).
+ * @param {string} errorResponse - The error response as a JSON string.
+ * @returns {string|null} - Returns the error message with code if the specific error code 400201 is found, null otherwise.
+ */
+function handleError(errorResponse) {
+    try {
+        const parsedError = JSON.parse(errorResponse);
+        if (parsedError.error === true) {
+            if (parsedError.code === 400201) {
+                return 'user_not_found';
+            } else {
+                return { error: true, message: `SB Serverless: ${errorResponse}` };
+            }
+        }
+    } catch (parseError) {
+        return { error: true, message: `SB Serverless: ${errorResponse}` };
+    }
+}
+
+
+
+
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="SBFDChannel.html">SBFDChannel</a></li><li><a href="SBFDChatClient.html">SBFDChatClient</a></li><li><a href="SBFDMessage.html">SBFDMessage</a></li><li><a href="SBFDMessageStatusHandler.html">SBFDMessageStatusHandler</a></li><li><a href="SBFDNotificationHandler.html">SBFDNotificationHandler</a></li><li><a href="SBFDSessionHandler.html">SBFDSessionHandler</a></li></ul><h3>Global</h3><ul><li><a href="global.html#SBFDChannelHandler">SBFDChannelHandler</a></li><li><a href="global.html#SBFDMessageHandler">SBFDMessageHandler</a></li><li><a href="global.html#cleanUpafterChanneRemoval">cleanUpafterChanneRemoval</a></li><li><a href="global.html#connectAndSetupChat">connectAndSetupChat</a></li><li><a href="global.html#getUserSessionToken">getUserSessionToken</a></li><li><a href="global.html#handleError">handleError</a></li><li><a href="global.html#initializeActiveChannel">initializeActiveChannel</a></li><li><a href="global.html#initializeChannelHandlers">initializeChannelHandlers</a></li><li><a href="global.html#initializeClient">initializeClient</a></li><li><a href="global.html#initializeMessageCollections">initializeMessageCollections</a></li><li><a href="global.html#initializeSessionManager">initializeSessionManager</a></li><li><a href="global.html#invokeTemplate">invokeTemplate</a></li><li><a href="global.html#renderInitialUI">renderInitialUI</a></li><li><a href="global.html#sendMessage">sendMessage</a></li><li><a href="global.html#setChannelName">setChannelName</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 13:27:25 GMT+0900 (Korean Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
