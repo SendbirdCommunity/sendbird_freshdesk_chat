@@ -120,11 +120,21 @@ class SBFDChatClient {
 
     /**
      * Connects to the chat system and sets up the chat interface.
-     * This includes fetching the channel list, setting up channel handlers, rendering the UI, and initializing active channels and message collections.
+     *
+     * This method handles various tasks such as:
+     *  - Fetching the list of chat channels.
+     *  - Setting up event handlers for those channels.
+     *  - Rendering the initial chat user interface.
+     *  - Initializing the active chat channel and associated message collections.
+     *
+     * If the channel collection contains no channels, a notification indicating the absence of messages is shown.
+     * If all initialization tasks complete successfully, a success notification is displayed.
+     *
      * @async
      * @function connectAndSetupChat
-     * @returns {Promise<void>} A promise that resolves when the operation is complete.
-     * @throws {Error} Throws an error if any part of the connection or setup process fails.
+     * @returns {Promise<void>} A promise that resolves when the chat setup and connection are complete.
+     *                          If an error occurs, it's logged to the console.
+     * @throws {Error} If any part of the connection or setup process encounters an issue.
      * @memberof SBFDChatClient
      */
     async connectAndSetupChat() {
@@ -147,6 +157,7 @@ class SBFDChatClient {
             // Handle error accordingly
         }
     }
+
 
     /**
      * Initializes the channel handlers for the channel collection.
