@@ -26,7 +26,10 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Initialize a variable to keep track of the currently active channel
+            <pre class="prettyprint source linenums"><code>/**
+ * Singleton instance of the SBFDchat client.
+ * @type {null|object}
+ */
 let SBFDchatClientInstance = null
 
 setTimeout(async () => {
@@ -57,6 +60,17 @@ class SBFDChatClient {
         this.appId = null
     }
 
+    /**
+     * Generates and returns the expiry timestamp for a session token.
+     * The expiry time is calculated as the current time plus a random
+     * duration ranging from 1 minute to 5 days, 23 hours, and 59 minutes.
+     *
+     * @returns {number} Timestamp representing the session token expiry in milliseconds since the Unix epoch.
+     *
+     * @example
+     * const expiryTime = getSessionTokenExpiry();
+     * console.log(new Date(expiryTime)); // Logs the expiration date and time for the token.
+     */
     getSessionTokenExpiry() {
         const randomDays = Math.floor(Math.random() * 5) + 1;
         const randomHours = Math.floor(Math.random() * 24);
@@ -67,8 +81,10 @@ class SBFDChatClient {
     }
 
 
+
     /**
      * Initializes the client and Sendbird connection.
+     * @async
      * @returns {Promise&lt;void>} A promise that resolves when initialization is complete.
      */
     async init() {
@@ -85,7 +101,6 @@ class SBFDChatClient {
 
     /**
      * Initializes the client, sets up notifications, and resizes the client instance.
-     *
      * @async
      * @function initializeClient
      * @returns {void}
@@ -103,10 +118,10 @@ class SBFDChatClient {
     /**
      * Initializes the session manager, creates a session token, connects to Sendbird,
      * and shows a success notification.
-     *
      * @async
      * @function initializeSessionManager
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     async initializeSessionManager() {
         const sessionManager = new SBFDSessionHandler(this.client);
@@ -121,10 +136,10 @@ class SBFDChatClient {
 
     /**
      * Sets the channel name in the user interface.
-     *
      * @function setChannelName
      * @param {string} channelName - The name of the channel to be displayed.
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     setChannelName(channelName) {
         const channelNameElement = document.getElementById('chat-view-channel-name');
@@ -133,11 +148,22 @@ class SBFDChatClient {
 
     /**
      * Connects to the chat system and sets up the chat interface.
-     * This includes fetching the channel list, setting up channel handlers, rendering the UI, and initializing active channels and message collections.
+     *
+     * This method handles various tasks such as:
+     *  - Fetching the list of chat channels.
+     *  - Setting up event handlers for those channels.
+     *  - Rendering the initial chat user interface.
+     *  - Initializing the active chat channel and associated message collections.
+     *
+     * If the channel collection contains no channels, a notification indicating the absence of messages is shown.
+     * If all initialization tasks complete successfully, a success notification is displayed.
+     *
      * @async
      * @function connectAndSetupChat
-     * @returns {Promise&lt;void>} A promise that resolves when the operation is complete.
-     * @throws {Error} Throws an error if any part of the connection or setup process fails.
+     * @returns {Promise&lt;void>} A promise that resolves when the chat setup and connection are complete.
+     *                          If an error occurs, it's logged to the console.
+     * @throws {Error} If any part of the connection or setup process encounters an issue.
+     * @memberof SBFDChatClient
      */
     async connectAndSetupChat() {
         try {
@@ -160,10 +186,12 @@ class SBFDChatClient {
         }
     }
 
+
     /**
      * Initializes the channel handlers for the channel collection.
      * @function initializeChannelHandlers
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     initializeChannelHandlers() {
         this.setChannelHandler(this.channelCollection);
@@ -173,6 +201,7 @@ class SBFDChatClient {
      * Renders the initial user interface for the chat system.
      * @function renderInitialUI
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     renderInitialUI() {
         SBFDChannelHandler.renderChannelList(this.channelCollection.channels); // Initial UI render after fetching
@@ -182,6 +211,7 @@ class SBFDChatClient {
      * Initializes the active channel by setting the active channel URL and name.
      * @function initializeActiveChannel
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     initializeActiveChannel() {
         this.activeChannelUrl = this.channelCollection.channels[0].url;
@@ -193,6 +223,7 @@ class SBFDChatClient {
      * @async
      * @function initializeMessageCollections
      * @returns {Promise&lt;void>} A promise that resolves when the operation is complete.
+     * @memberof SBFDChatClient
      */
     async initializeMessageCollections() {
         await this.buildMessageCollection(this.activeChannelUrl);
@@ -223,6 +254,7 @@ class SBFDChatClient {
      * Builds the message collection for a specific channel URL.
      * @param {string} channelUrl - The URL of the channel.
      * @returns {Promise&lt;void>} A promise that resolves when the operation is complete.
+     * @memberof SBFDChatClient
      */
     async buildMessageCollection(channelUrl) {
         // ...
@@ -269,8 +301,8 @@ class SBFDChatClient {
 
     /**
      * Fetches the channel list.
-     * @param {object} sb - The Sendbird object.
      * @returns {Promise&lt;object>} A promise that resolves with the channel collection.
+     * @memberof SBFDChatClient
      */
     async fetchChannelList() {
         // ...
@@ -314,7 +346,7 @@ class SBFDChatClient {
 
     /**
      * Sets the channel handler for the channel collection.
-     * @param {object} channelCollection - The channel collection.
+     * @function setChannelHandler
      */
     setChannelHandler() {
 
@@ -378,13 +410,13 @@ class SBFDChatClient {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="SBFDChannel.html">SBFDChannel</a></li><li><a href="SBFDChatClient.html">SBFDChatClient</a></li><li><a href="SBFDMessage.html">SBFDMessage</a></li><li><a href="SBFDMessageStatusHandler.html">SBFDMessageStatusHandler</a></li><li><a href="SBFDNotificationHandler.html">SBFDNotificationHandler</a></li><li><a href="SBFDSessionHandler.html">SBFDSessionHandler</a></li></ul><h3>Global</h3><ul><li><a href="global.html#SBFDChannelHandler">SBFDChannelHandler</a></li><li><a href="global.html#SBFDMessageHandler">SBFDMessageHandler</a></li><li><a href="global.html#cleanUpafterChanneRemoval">cleanUpafterChanneRemoval</a></li><li><a href="global.html#connectAndSetupChat">connectAndSetupChat</a></li><li><a href="global.html#getUserSessionToken">getUserSessionToken</a></li><li><a href="global.html#handleError">handleError</a></li><li><a href="global.html#initializeActiveChannel">initializeActiveChannel</a></li><li><a href="global.html#initializeChannelHandlers">initializeChannelHandlers</a></li><li><a href="global.html#initializeClient">initializeClient</a></li><li><a href="global.html#initializeMessageCollections">initializeMessageCollections</a></li><li><a href="global.html#initializeSessionManager">initializeSessionManager</a></li><li><a href="global.html#invokeTemplate">invokeTemplate</a></li><li><a href="global.html#renderInitialUI">renderInitialUI</a></li><li><a href="global.html#sendMessage">sendMessage</a></li><li><a href="global.html#setChannelName">setChannelName</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="SBFDChannel.html">SBFDChannel</a></li><li><a href="SBFDChatClient.html">SBFDChatClient</a></li><li><a href="SBFDMessage.html">SBFDMessage</a></li><li><a href="SBFDMessageStatusHandler.html">SBFDMessageStatusHandler</a></li><li><a href="SBFDNotificationHandler.html">SBFDNotificationHandler</a></li><li><a href="SBFDSessionHandler.html">SBFDSessionHandler</a></li></ul><h3>Global</h3><ul><li><a href="global.html#SBFDChannelHandler">SBFDChannelHandler</a></li><li><a href="global.html#SBFDMessageHandler">SBFDMessageHandler</a></li><li><a href="global.html#SBFDchatClientInstance">SBFDchatClientInstance</a></li><li><a href="global.html#cleanUpafterChanneRemoval">cleanUpafterChanneRemoval</a></li><li><a href="global.html#getUserSessionToken">getUserSessionToken</a></li><li><a href="global.html#handleError">handleError</a></li><li><a href="global.html#initializeClient">initializeClient</a></li><li><a href="global.html#invokeTemplate">invokeTemplate</a></li><li><a href="global.html#sendMessage">sendMessage</a></li><li><a href="global.html#setChannelHandler">setChannelHandler</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 14:53:27 GMT+0900 (Korean Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Aug 29 2023 15:36:38 GMT+0900 (Korean Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
