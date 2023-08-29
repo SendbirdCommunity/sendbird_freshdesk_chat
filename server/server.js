@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Home of the the serverless functions for the Freshdesk app.
+ * @module FresdeskServerlessServer
+ */
+
+
 exports = {
     async checkUserExists(context) {
         /**
