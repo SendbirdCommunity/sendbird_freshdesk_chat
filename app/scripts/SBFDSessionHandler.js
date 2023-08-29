@@ -14,6 +14,7 @@ class SBFDSessionHandler {
      * Sets the expiry for the session token. The expiry is calculated based on a random number of days, hours, and minutes.
      * @async
      * @returns {number} The timestamp indicating the session token's expiry.
+     * @memberof SBFDSessionHandler
      */
     async setSessionTokenExpiry() {
         const randomDays = Math.floor(Math.random() * 5) + 1;
@@ -28,6 +29,7 @@ class SBFDSessionHandler {
      * @async
      * @param {string} userId - The ID of the user for whom the session token needs to be fetched.
      * @returns {object} The session token data.
+     * @memberof SBFDSessionHandler
      */
     async getUserSessionToken(userId) {
         const sessionToken = await this.client.request.invoke("getUserSessionToken", { params: { "user_id": userId, expires_at: await this.setSessionTokenExpiry() } });
@@ -42,6 +44,7 @@ class SBFDSessionHandler {
      * @param {string} userId - The ID of the user for whom the session token needs to be checked or created.
      * @param {string} nickname - The nickname of the user.
      * @returns {object} The session token data.
+     * @memberof SBFDSessionHandler
      */
     async checkAndCreateSessionToken(userId, nickname) {
         try {

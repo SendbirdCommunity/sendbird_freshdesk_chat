@@ -43,6 +43,11 @@ class SBFDChannel {
 
 /**
  * Object containing functions for handling channels.
+ * @type {object}
+ * @property {function} createChannelEntry - Creates a channel entry.
+ * @property {function} createChannelList - Creates a list of channels.
+ * @property {function} switchToChatView - Switches to the chat view.
+ *
  */
 const SBFDChannelHandler = {
     /**
@@ -81,6 +86,8 @@ const SBFDChannelHandler = {
     /**
      * Renders a list of channels in the UI.
      * @param {Array} channels - The list of channels to render.
+     * @returns {Promise<void>} A promise that resolves when the operation is complete.
+     *
      */
     renderChannelList: function(channels) {
         const target = document.getElementById('channel-list');
