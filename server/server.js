@@ -1,6 +1,27 @@
 /**
- * @fileoverview Home of the the serverless functions for the Freshdesk app.
- * @module FresdeskServerlessServer
+ * Freshdesk serverless module for user management tasks.
+ * This module provides functionalities to check if a user exists and to retrieve a user session token by leveraging predefined templates.
+ *
+ * @module UserManagement
+ *
+ * @exports {object} An object with methods to perform various user management tasks.
+ *
+ * @property {Function} checkUserExists - A method that checks if a user exists. If not, it creates a new user.
+ * It uses predefined templates to check for user existence and to create a new user if necessary.
+ * If an error occurs, it renders the error message.
+ *
+ * @property {Function} getUserSessionToken - A method that retrieves a user session token using a predefined template.
+ * The session token is needed for various user actions.
+ * If an error occurs during the retrieval process, it renders the error message.
+ *
+ * @example
+ * const UserManagement = require('./path-to-this-module');
+ *
+ * const contextForCheck = { params: { userId: "user123", otherDetails: "info" } };
+ * await UserManagement.checkUserExists(contextForCheck);
+ *
+ * const contextForSession = { params: { userId: "user123", otherParam: "value" } };
+ * await UserManagement.getUserSessionToken(contextForSession);
  */
 
 
