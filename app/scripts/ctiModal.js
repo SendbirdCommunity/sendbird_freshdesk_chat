@@ -203,6 +203,7 @@ class SBFDChatClient {
 
     /**
      * Adds a listener for the message input.
+     * @memberof SBFDChatClient
      */
     addMessageInputListener() {
         // ... Existing logic for adding message input listener ...
@@ -301,6 +302,7 @@ class SBFDChatClient {
      * @function cleanUpafterChanneRemoval
      * @param {Array<string>} channelUrls - An array of channel URLs that have been removed. The function will iterate through this array to perform cleanup for each URL.
      * @returns {void} This method does not return a value.
+     * @memberof SBFDChatClient
      */
     cleanUpafterChanneRemoval(channelUrls) {
         // ...
@@ -319,6 +321,7 @@ class SBFDChatClient {
     /**
      * Sets the channel handler for the channel collection.
      * @function setChannelHandler
+     * @memberof SBFDChatClient
      */
     setChannelHandler() {
 
@@ -355,6 +358,7 @@ class SBFDChatClient {
      * @param {string} message - The text content of the message to be sent.
      * @returns {Promise<void>} A promise that resolves when the message has been successfully sent. If an error occurs during the sending process, it will be logged but not propagated.
      * @throws {Error} Throws an error if there is an issue retrieving the channel or sending the message.
+     * @memberof SBFDChatClient
      */
     async sendMessage(channelUrl, message) {
         // ...
