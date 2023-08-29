@@ -1,43 +1,47 @@
 /**
- * Class for notifications
+ * Handles the display of notifications.
  */
 class SBFDNotificationHandler {
     /**
+     * Constructs a new notification handler.
      *
-     * @param notificationType
-     * @param title
-     * @param message
+     * @param {object} client - The client interface for triggering notifications.
      */
     constructor(client) {
         this.client = client;
     }
+
     /**
+     * Displays a notification.
      *
-     * @param notificationType
-     * @param title
-     * @param message
+     * @param {string} notificationType - The type of notification ('success', 'warning', 'alert', 'danger').
+     * @param {string} title - The title of the notification.
+     * @param {string} message - The message body of the notification.
+     * @returns {Promise<void>} Resolves with success data or rejects with an error.
      */
     show(notificationType, title, message) {
-
-        //Success, warning, alert, danger.
-        this.client.interface.trigger("showNotify", {
+        return this.client.interface.trigger("showNotify", {
             type: notificationType,
             title: title,
             message: message
-        }).then(function(data) {
-        // data - success message
+        }).then(data => {
             console.log(data);
-
-        }
-    ).catch(function(error) {
-        // error - error object
+        }).catch(error => {
             console.log(error);
-        })
+        });
     }
+
+    /**
+     * Displays a red dot on the tab button.
+     */
     setRedDotOn() {
         const redDot = document.querySelector('.tab-button__red-dot');
         redDot.className = 'tab-button__red-dot display';
     }
+
+    /**
+     * Hides the red dot on the tab button.
+     */
     setRedDotOff() {
         const redDot = document.querySelector('.tab-button__red-dot');
         redDot.className = 'tab-button__red-dot hidden';

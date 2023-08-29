@@ -4,7 +4,7 @@
 class SBFDSessionHandler {
     /**
      * Creates a new SBFDSessionHandler instance.
-     * @param {Object} client - The client object used to make requests and manage data.
+     * @param {object} client - The client object used to make requests and manage data.
      */
     constructor(client) {
         this.client = client;
@@ -27,7 +27,7 @@ class SBFDSessionHandler {
      * Retrieves the user's session token.
      * @async
      * @param {string} userId - The ID of the user for whom the session token needs to be fetched.
-     * @returns {Object} The session token data.
+     * @returns {object} The session token data.
      */
     async getUserSessionToken(userId) {
         const sessionToken = await this.client.request.invoke("getUserSessionToken", { params: { "user_id": userId, expires_at: await this.setSessionTokenExpiry() } });
@@ -41,12 +41,17 @@ class SBFDSessionHandler {
      * @async
      * @param {string} userId - The ID of the user for whom the session token needs to be checked or created.
      * @param {string} nickname - The nickname of the user.
-     * @returns {Object} The session token data.
+     * @returns {object} The session token data.
      */
     async checkAndCreateSessionToken(userId, nickname) {
         try {
             const locallyStoredUserSessionToken = await this.client.db.get("sendbird_session_token");
-            const expiresAt = locallyStoredUserSessionToken?.expires_at;
+            let expiresAt;
+            if (locallyStoredUserSessionToken) {
+                expiresAt = locallyStoredUserSessionToken.expires_at;
+            } else {
+                expiresAt = undefined;  // or null, or some default value
+            }
             const now = new Date().getTime();
 
             if (expiresAt > now) {
