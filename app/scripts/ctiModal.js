@@ -82,6 +82,7 @@ class SBFDChatClient {
      * @async
      * @function initializeSessionManager
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     async initializeSessionManager() {
         const sessionManager = new SBFDSessionHandler(this.client);
@@ -100,6 +101,7 @@ class SBFDChatClient {
      * @function setChannelName
      * @param {string} channelName - The name of the channel to be displayed.
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     setChannelName(channelName) {
         const channelNameElement = document.getElementById('chat-view-channel-name');
@@ -113,6 +115,7 @@ class SBFDChatClient {
      * @function connectAndSetupChat
      * @returns {Promise<void>} A promise that resolves when the operation is complete.
      * @throws {Error} Throws an error if any part of the connection or setup process fails.
+     * @memberof SBFDChatClient
      */
     async connectAndSetupChat() {
         try {
@@ -139,6 +142,7 @@ class SBFDChatClient {
      * Initializes the channel handlers for the channel collection.
      * @function initializeChannelHandlers
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     initializeChannelHandlers() {
         this.setChannelHandler(this.channelCollection);
@@ -148,6 +152,7 @@ class SBFDChatClient {
      * Renders the initial user interface for the chat system.
      * @function renderInitialUI
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     renderInitialUI() {
         SBFDChannelHandler.renderChannelList(this.channelCollection.channels); // Initial UI render after fetching
@@ -157,6 +162,7 @@ class SBFDChatClient {
      * Initializes the active channel by setting the active channel URL and name.
      * @function initializeActiveChannel
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     initializeActiveChannel() {
         this.activeChannelUrl = this.channelCollection.channels[0].url;
@@ -168,6 +174,7 @@ class SBFDChatClient {
      * @async
      * @function initializeMessageCollections
      * @returns {Promise<void>} A promise that resolves when the operation is complete.
+     * @memberof SBFDChatClient
      */
     async initializeMessageCollections() {
         await this.buildMessageCollection(this.activeChannelUrl);
@@ -198,6 +205,7 @@ class SBFDChatClient {
      * Builds the message collection for a specific channel URL.
      * @param {string} channelUrl - The URL of the channel.
      * @returns {Promise<void>} A promise that resolves when the operation is complete.
+     * @memberof SBFDChatClient
      */
     async buildMessageCollection(channelUrl) {
         // ...
@@ -245,6 +253,7 @@ class SBFDChatClient {
     /**
      * Fetches the channel list.
      * @returns {Promise<object>} A promise that resolves with the channel collection.
+     * @memberof SBFDChatClient
      */
     async fetchChannelList() {
         // ...
