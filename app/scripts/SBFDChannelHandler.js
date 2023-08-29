@@ -1,4 +1,10 @@
 /**
+ * @fileoverview Home of the SBFDChannelHandler global object which listens for channel events and updates the UI accordingly.
+ * @module SBFDChannelHandler
+ */
+
+
+/**
  * Represents a chat channel.
  */
 class SBFDChannel {
