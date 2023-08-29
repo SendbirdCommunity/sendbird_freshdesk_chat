@@ -56,6 +56,7 @@ class SBFDChatClient {
 
     /**
      * Initializes the client and Sendbird connection.
+     * @async
      * @returns {Promise<void>} A promise that resolves when initialization is complete.
      */
     async init() {
