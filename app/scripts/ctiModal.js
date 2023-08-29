@@ -76,6 +76,7 @@ class SBFDChatClient {
      * @async
      * @function initializeClient
      * @returns {void}
+     * @memberof SBFDChatClient
      */
     async initializeClient() {
         this.client = await app.initialized();
