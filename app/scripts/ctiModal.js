@@ -8,6 +8,7 @@ setTimeout(async () => {
 
 /**
  * Class to manage the client, channels, and messages.
+ * @class
  */
 class SBFDChatClient {
     /**
