@@ -1,5 +1,13 @@
+
+/**
+ * @fileoverview Home of the SBFDSessionHandler which provides functions for controlling the session.
+ * @module SBFDSessionHandler
+ */
+
+
 /**
  * Represents a handler for managing SBFD sessions.
+ * @class SBFDSessionHandler
  */
 class SBFDSessionHandler {
     /**
