@@ -7,7 +7,10 @@ class  SBFDMessageStatusHandler  {
    * @param {Object} chatClient - An instance of SBFDChatClient or a related chat client object.
    */
   constructor(chatClient) {
-    /** @type {Object} The chat client associated with this handler. */
+    /**
+     * The chat client associated with this handler.
+     * @type {Object}
+     */
     this.chatClient = chatClient;
   }
 
