@@ -91,10 +91,6 @@ class SBFDChatClient {
         this.notify.show("success", "Chat: ", `"Connected as ${this.sb.currentUser.nickname}`);
     }
 
-
-
-
-
     /**
      * Sets the channel name in the user interface.
      *
@@ -166,6 +162,7 @@ class SBFDChatClient {
 
     /**
      * Initializes the message collections for the active channel.
+     * @async
      * @function initializeMessageCollections
      * @returns {Promise<void>} A promise that resolves when the operation is complete.
      */
