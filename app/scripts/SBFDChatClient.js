@@ -6,7 +6,7 @@
 
 /**
  * Class to manage the client, channels, and messages.
- * @class
+ * @class SBFDChatClient
  */
 class SBFDChatClient {
     /**
@@ -53,7 +53,7 @@ class SBFDChatClient {
      * Initializes the client and Sendbird connection.
      * @async
      * @returns {Promise<void>} A promise that resolves when initialization is complete.
-     * @memberOf SBFDChatClient
+     * @memberof SBFDChatClient
      */
     async init() {
         try {
@@ -72,7 +72,7 @@ class SBFDChatClient {
      * @async
      * @function initializeClient
      * @returns {void}
-     * @memberOf SBFDChatClient
+     * @memberof SBFDChatClient
      */
     async initializeClient() {
         this.client = await app.initialized();
@@ -90,7 +90,7 @@ class SBFDChatClient {
      * @async
      * @function initializeSessionManager
      * @returns {void}
-     * @memberOf SBFDChatClient
+     * @memberof SBFDChatClient
      */
     async initializeSessionManager() {
         const sessionManager = new SBFDSessionHandler(this.client);
