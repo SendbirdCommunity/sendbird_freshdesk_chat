@@ -1,5 +1,5 @@
 /**
- * @fileoverview Home of the SBFDMessageStatusHandler which provides functions for updating the message status.
+ * @file Home of the SBFDMessageStatusHandler which provides functions for updating the message status.
  * @module SBFDMessageStatusHandler
  */
 

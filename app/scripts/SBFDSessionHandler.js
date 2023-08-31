@@ -1,6 +1,6 @@
 
 /**
- * @fileoverview Home of the SBFDSessionHandler which provides functions for controlling the session.
+ * @file Home of the SBFDSessionHandler which provides functions for controlling the session.
  * @module SBFDSessionHandler
  */
 

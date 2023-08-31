@@ -1,12 +1,12 @@
 /**
- * @fileoverview Home of the SBFDChatClient which provides key functions for interacting with the Freshdesk Chat API.
+ * @file Home of the SBFDChatClient which provides key functions for interacting with the Freshdesk Chat API.
  * @module SBFDChatClient
  */
 
 
 /**
  * Class to manage the client, channels, and messages.
- * @class SBFDChatClient
+ * @class
  */
 class SBFDChatClient {
     /**
@@ -33,7 +33,7 @@ class SBFDChatClient {
      * duration ranging from 1 minute to 5 days, 23 hours, and 59 minutes.
      *
      * @returns {number} Timestamp representing the session token expiry in milliseconds since the Unix epoch.
-     *
+     * @memberof SBFDChatClient
      * @example
      * const expiryTime = getSessionTokenExpiry();
      * console.log(new Date(expiryTime)); // Logs the expiration date and time for the token.

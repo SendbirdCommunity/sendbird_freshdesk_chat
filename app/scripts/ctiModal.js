@@ -1,5 +1,5 @@
 /**
- * @fileoverview Is the starting point for the application to show the Freshdesk CTI modal
+ * @file Is the starting point for the application to show the Freshdesk CTI modal
  * @module ctiModal
  */
 

@@ -1,6 +1,6 @@
 
 /**
- * @fileoverview Home of the SBFDNotificationHandler which provides functions for updating the notification pop ups in the Freshdesk UI.
+ * @file Home of the SBFDNotificationHandler which provides functions for updating the notification pop ups in the Freshdesk UI.
  * @module SBFDNotificationHandler
  */
 

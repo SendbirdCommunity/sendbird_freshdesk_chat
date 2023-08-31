@@ -1,5 +1,5 @@
 /**
- * @fileoverview Home of the SBFDChannelHandler global object which listens for channel events and updates the UI accordingly.
+ * @file Home of the SBFDChannelHandler global object which listens for channel events and updates the UI accordingly.
  * @module SBFDChannelHandler
  */
 
@@ -50,9 +50,9 @@ class SBFDChannel {
 /**
  * Object containing functions for handling channels.
  * @type {object}
- * @property {function} createChannelEntry - Creates a channel entry.
- * @property {function} createChannelList - Creates a list of channels.
- * @property {function} switchToChatView - Switches to the chat view.
+ * @property {Function} createChannelEntry - Creates a channel entry.
+ * @property {Function} createChannelList - Creates a list of channels.
+ * @property {Function} switchToChatView - Switches to the chat view.
  *
  */
 const SBFDChannelHandler = {
