@@ -3,8 +3,6 @@
  * @module ctiModal
  */
 
-
-
 /**
  * Singleton instance of the SBFDchat client.
  * @type {null|object}

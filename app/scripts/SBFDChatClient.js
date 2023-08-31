@@ -6,6 +6,7 @@
 
 /**
  * Class to manage the client, channels, and messages.
+ * @class
  */
 class SBFDChatClient {
     /**
@@ -136,7 +137,7 @@ class SBFDChatClient {
     async connectAndSetupChat() {
         try {
             this.channelCollection = await this.fetchChannelList();
-            this.initializeChannelHandlers();
+            this.setChannelHandler();
             this.renderInitialUI();
 
             if (this.channelCollection.channels.length === 0) {
@@ -152,17 +153,6 @@ class SBFDChatClient {
             console.error("Error connecting and setting up chat:", err);
             // Handle error accordingly
         }
-    }
-
-
-    /**
-     * Initializes the channel handlers for the channel collection.
-     * @function initializeChannelHandlers
-     * @returns {void}
-     * @memberof SBFDChatClient
-     */
-    initializeChannelHandlers() {
-        this.setChannelHandler(this.channelCollection);
     }
 
     /**

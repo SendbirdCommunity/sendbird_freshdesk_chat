@@ -53,7 +53,7 @@ class SBFDChannel {
  * @property {Function} createChannelEntry - Creates a channel entry.
  * @property {Function} createChannelList - Creates a list of channels.
  * @property {Function} switchToChatView - Switches to the chat view.
- *
+ * @global
  */
 const SBFDChannelHandler = {
     /**
