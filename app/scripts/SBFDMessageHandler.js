@@ -47,6 +47,8 @@ class SBFDMessage {
 
 /**
  * Object containing functions for handling messages.
+ * @type {object}
+ * @global
  */
 const SBFDMessageHandler = {
     /**
