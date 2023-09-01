@@ -1,10 +1,3 @@
-// /**
-//  * @file Home of the SBFDChatClient which provides key functions for interacting with the Freshdesk Chat API.
-//  * @module SBFDChatClient
-//  */
-
-
-
 /**
  * Class to manage the client, channels, and messages.
  */

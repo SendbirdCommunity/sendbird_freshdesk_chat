@@ -1,8 +1,7 @@
 /**
  * Freshdesk serverless module for user management tasks.
  * This module provides functionalities to check if a user exists and to retrieve a user session token by leveraging predefined templates.
- *
- * @module UserManagement
+ * @module checkUserExists
  *
  * @exports {object} An object with methods to perform various user management tasks.
  *

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Global</title>
+    <title>JSDoc: Class: SBFDMessageStatusHandler</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Class: SBFDMessageStatusHandler</h1>
 
     
 
@@ -28,7 +28,9 @@
 
 <header>
     
-        <h2></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>SBFDMessageStatusHandler<span class="signature">(chatClient)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Class representing a handler for managing message statuses within the SBFDChatClient.</div>
         
     
 </header>
@@ -38,96 +40,34 @@
     
         
 
-        
-
-
-<dl class="details">
-
+    
+    <h2>Constructor</h2>
     
 
     
-
+    <h4 class="name" id="SBFDMessageStatusHandler"><span class="type-signature"></span>new SBFDMessageStatusHandler<span class="signature">(chatClient)</span><span class="type-signature"></span></h4>
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="SBFDChannelHandler"><span class="type-signature">(constant) </span>SBFDChannelHandler<span class="type-signature"> :object</span></h4>
-
 
 
 
 <div class="description">
-    Object containing functions for handling channels.
+    Create a new SBFDMessageStatusHandler.
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">object</span>
-
-
-        </li>
-    </ul>
 
 
 
 
 
-    <h5 class="subsection-title">Properties:</h5>
 
+    <h5>Parameters:</h5>
     
 
-<table class="props">
+<table class="params">
     <thead>
     <tr>
         
@@ -149,13 +89,13 @@
 
         <tr>
             
-                <td class="name"><code>createChannelEntry</code></td>
+                <td class="name"><code>chatClient</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">object</span>
 
 
             
@@ -165,53 +105,7 @@
 
             
 
-            <td class="description last">Creates a channel entry.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>createChannelList</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Creates a list of channels.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>switchToChatView</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Switches to the chat view.</td>
+            <td class="description last">An instance of SBFDChatClient or a related chat client object.</td>
         </tr>
 
     
@@ -221,6 +115,8 @@
 
 
 
+
+
 <dl class="details">
 
     
@@ -250,7 +146,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_scripts_SBFDChannelHandler.js.html">app/scripts/SBFDChannelHandler.js</a>, <a href="app_scripts_SBFDChannelHandler.js.html#line52">line 52</a>
+        <a href="app_scripts_SBFDMessageStatusHandler.js.html">app/scripts/SBFDMessageStatusHandler.js</a>, <a href="app_scripts_SBFDMessageStatusHandler.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -266,15 +162,47 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
         
             
-<h4 class="name" id="SBFDMessageHandler"><span class="type-signature">(constant) </span>SBFDMessageHandler<span class="type-signature"> :object</span></h4>
+<h4 class="name" id="chatClient"><span class="type-signature"></span>chatClient<span class="type-signature"> :object</span></h4>
 
 
 
 
 <div class="description">
-    Object containing functions for handling messages.
+    The chat client associated with this handler.
 </div>
 
 
@@ -322,7 +250,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_scripts_SBFDMessageHandler.js.html">app/scripts/SBFDMessageHandler.js</a>, <a href="app_scripts_SBFDMessageHandler.js.html#line48">line 48</a>
+        <a href="app_scripts_SBFDMessageStatusHandler.js.html">app/scripts/SBFDMessageStatusHandler.js</a>, <a href="app_scripts_SBFDMessageStatusHandler.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -339,30 +267,84 @@
 
 
         
-            
-<h4 class="name" id="SBFDchatClientInstance"><span class="type-signature"></span>SBFDchatClientInstance<span class="type-signature"> :null|object</span></h4>
+    
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="markMessageAsRead"><span class="type-signature"></span>markMessageAsRead<span class="signature">(channelUrl)</span><span class="type-signature"></span></h4>
+    
+
+    
 
 
 
 <div class="description">
-    Singleton instance of the SBFDchat client.
+    Mark a message as read within a specific channel.
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<span class="param-type">null</span>
-|
+                <td class="name"><code>channelUrl</code></td>
+            
 
-<span class="param-type">object</span>
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
 
 
-        </li>
-    </ul>
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The URL of the channel where the message should be marked as read.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
 
 
 
@@ -397,7 +379,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="app_scripts_ctiModal.js.html">app/scripts/ctiModal.js</a>, <a href="app_scripts_ctiModal.js.html#line5">line 5</a>
+        <a href="app_scripts_SBFDMessageStatusHandler.js.html">app/scripts/SBFDMessageStatusHandler.js</a>, <a href="app_scripts_SBFDMessageStatusHandler.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -413,9 +395,21 @@
 
 
 
-        
-    
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     

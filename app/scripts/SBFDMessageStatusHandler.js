@@ -1,10 +1,4 @@
 /**
- * @file Home of the SBFDMessageStatusHandler which provides functions for updating the message status.
- * @module SBFDMessageStatusHandler
- */
-
-
-/**
  * Class representing a handler for managing message statuses within the SBFDChatClient.
  * @class
  *

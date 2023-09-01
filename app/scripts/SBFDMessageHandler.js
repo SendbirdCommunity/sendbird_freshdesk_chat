@@ -1,9 +1,4 @@
 /**
- * @file Home of the SBFDmessageHandler global object which listens for messages events and updates the UI accordingly.
- * @module SBFDMessageHandler
- */
-
-/**
  * Represents a chat message.
  */
 class SBFDMessage {
