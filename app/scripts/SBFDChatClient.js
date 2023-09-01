@@ -3,10 +3,8 @@
  * @module SBFDChatClient
  */
 
-
 /**
  * Class to manage the client, channels, and messages.
- * @class
  */
 class SBFDChatClient {
     /**
