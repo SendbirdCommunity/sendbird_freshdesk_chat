@@ -31,9 +31,8 @@ class SBFDChatClient {
      * Generates and returns the expiry timestamp for a session token.
      * The expiry time is calculated as the current time plus a random
      * duration ranging from 1 minute to 5 days, 23 hours, and 59 minutes.
-     *
-     * @returns {number} Timestamp representing the session token expiry in milliseconds since the Unix epoch.
      * @memberof SBFDChatClient
+     * @returns {number} Timestamp representing the session token expiry in milliseconds since the Unix epoch.
      * @example
      * const expiryTime = getSessionTokenExpiry();
      * console.log(new Date(expiryTime)); // Logs the expiration date and time for the token.
